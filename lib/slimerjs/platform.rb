@@ -51,7 +51,7 @@ module Slimerjs
         FileUtils.mkdir_p temp_dir
 
         Dir.chdir temp_dir do
-          unless system "curl -O -L #{package_url}" or system "wget #{package_url}"
+          unless system "curl --remote-name --location #{package_url}" or system "wget #{package_url}"
             raise "\n\nFailed to load slimerjs! :(\nYou need to have cURL or wget installed on your system.\nIf you have, the source of slimerjs might be unavailable: #{package_url}\n\n"
           end
 
