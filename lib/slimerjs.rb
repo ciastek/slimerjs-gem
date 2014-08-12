@@ -47,7 +47,7 @@ module Slimerjs
     # Run slimerjs with the given arguments, and either
     # return the stdout or yield each line to the passed block.
     def run(*args, &block)
-      IO.popen([path, *args]) do |io|
+      IO.popen(["xvfb-run", path, *args]) do |io|
         block ? io.each(&block) : io.read
       end
     end
